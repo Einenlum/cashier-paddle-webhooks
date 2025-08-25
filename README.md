@@ -4,7 +4,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/einenlum/cashier-paddle-webhooks.svg?style=flat-square)](https://packagist.org/packages/einenlum/cashier-paddle-webhooks)
 
-This package allows you to setup Paddle webhooks locally in just one command, thanks to [tunnelmole](https://tunnelmole.com/). When the command is killed, it removes the webhook from Paddle.
+This package allows you to setup Paddle webhooks locally in just one command, thanks to [tunnelmole](https://tunnelmole.com/). When the command is killed, it removes the webhook from Paddle. The library only works in *sandbox* mode.
 
 This is **heavily** inspired from this [awesome command](https://github.com/lmsqueezy/laravel/blob/main/src/Console/ListenCommand.php) made by the LemonSqueezy team for their [Laravel package](https://github.com/lmsqueezy/laravel). Kudo to them! :heart:
 
