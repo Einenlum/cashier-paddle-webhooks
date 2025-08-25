@@ -11,6 +11,7 @@ use Illuminate\Process\InvokedProcess;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\Process\Exception\ProcessSignaledException;
 
 use function Laravel\Prompts\error;
 use function Laravel\Prompts\info;
@@ -182,7 +183,6 @@ class ListenPaddleWebhooksCommand extends Command implements Isolatable, Prompts
         $regex = '/https:\/\/[^\s]+\.tunnelmole\.net/';
 
         while ($this->process->running()) {
-
             if ($tunnel !== null) {
                 sleep(1);
 
@@ -202,6 +202,20 @@ class ListenPaddleWebhooksCommand extends Command implements Isolatable, Prompts
             }
 
             sleep(1);
+        }
+
+        try {
+            $result = $this->process->wait();
+            $latestOutput = $this->process->latestErrorOutput();
+            if ($result->failed()) {
+                error('The tunneling process exited unexpectedly.');
+
+                error($latestOutput);
+
+                return static::FAILURE;
+            }
+        } catch (ProcessSignaledException $e) {
+            // Process was terminated by a signal (e.g., SIGINT)
         }
 
         return static::SUCCESS;
