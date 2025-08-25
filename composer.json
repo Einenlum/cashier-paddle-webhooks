@@ -35,8 +35,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Einenlum\\CashierPaddleWebhooks\\": "src/",
-            "Einenlum\\CashierPaddleWebhooks\\Database\\Factories\\": "database/factories/"
+            "Einenlum\\CashierPaddleWebhooks\\": "src/"
         }
     },
     "autoload-dev": {
