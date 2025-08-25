@@ -1,6 +1,6 @@
-# cashier-paddle-webhooks
+## cashier-paddle-webhooks
 
-## A package to automatically listen to Paddle Webhooks in local development with Laravel Cashier
+### A package to automatically listen to Paddle Webhooks in local development with Laravel Cashier
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/einenlum/cashier-paddle-webhooks.svg?style=flat-square)](https://packagist.org/packages/einenlum/cashier-paddle-webhooks)
 
