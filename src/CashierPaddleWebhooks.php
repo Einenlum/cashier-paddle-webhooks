@@ -27,41 +27,6 @@ class CashierPaddleWebhooks
         Cache::forget(config('cashier-paddle-webhooks.cache_key'));
     }
 
-    public function fetchWebhooks(): array
-    {
-        $fetch = true;
-        $page = 1;
-        $webhooks = [];
-
-        while ($fetch) {
-            $result = Http::withToken(config('cashier.api_key'))
-                ->withHeaders([
-                    'Accept' => 'application/json',
-                ])
-                ->retry(3, 250)
-                ->get($this->getPaddleApiUrl().'/notification-settings', [
-                    'per_page' => 50,
-                    'page' => $page,
-                ])
-                ->json();
-
-            $page++;
-
-            $meta = $result['meta'] ?? [];
-            $pagination = $meta['pagination'] ?? [];
-
-            if (isset($pagination['has_more']) && ! $pagination['has_more']) {
-                $fetch = false;
-            }
-
-            foreach ($result['data'] ?? [] as $webhook) {
-                $webhooks[] = $webhook;
-            }
-        }
-
-        return $webhooks;
-    }
-
     public function setupWebhook(string $tunnel, string $service): PaddleWebhook
     {
         $path = config('cashier-paddle-webhooks.webhook_path') ?: config('cashier.path').'/webhook';
@@ -81,7 +46,7 @@ class CashierPaddleWebhooks
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
             ])
-            ->retry(3, 250)
+            ->retry(3, 250, throw: false)
             ->post($this->getPaddleApiUrl().'/notification-settings', $data);
 
         if (! $result->successful()) {
