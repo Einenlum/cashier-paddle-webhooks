@@ -24,6 +24,7 @@ class CashierPaddleWebhooksServiceProvider extends PackageServiceProvider
     {
         $this->configureRoutes();
         $this->bootPublishing();
+        $this->bootCommands();
     }
 
     public function configureRoutes(): void
@@ -55,6 +56,15 @@ class CashierPaddleWebhooksServiceProvider extends PackageServiceProvider
             $this->publishes([
                 __DIR__.'/../config/cashier-paddle-webhooks.php' => $this->app->configPath('cashier-paddle-webhooks.php'),
             ], 'cashier-paddle-webhooks-config');
+        }
+    }
+
+    protected function bootCommands(): void
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                ListenPaddleWebhooksCommand::class,
+            ]);
         }
     }
 }

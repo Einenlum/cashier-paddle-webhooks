@@ -22,6 +22,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
+            \Laravel\Paddle\CashierServiceProvider::class,
             CashierPaddleWebhooksServiceProvider::class,
         ];
     }
@@ -29,5 +30,7 @@ class TestCase extends Orchestra
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
+        config()->set('cashier.sandbox', true);
+        config()->set('app.env', 'local');
     }
 }

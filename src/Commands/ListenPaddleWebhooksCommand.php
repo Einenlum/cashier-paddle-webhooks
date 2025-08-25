@@ -24,6 +24,7 @@ use function Laravel\Prompts\select;
 class ListenPaddleWebhooksCommand extends Command
 {
     public $signature = 'cashier-paddle-webhooks:listen
+                        {service? : The tunneling service to use}
                         {--port=8000 : The port on your machine to tunnel to the internet}';
 
     public $description = 'Listens to Paddle webhooks via tunnelmole.';
@@ -55,7 +56,7 @@ class ListenPaddleWebhooksCommand extends Command
         }
 
         if (windows_os()) {
-            error('paddle:listen is not supported on Windows because it lacks support for signal handling.');
+            error('cashier-paddle-webhooks:listen is not supported on Windows because it lacks support for signal handling.');
 
             return static::FAILURE;
         }
@@ -86,7 +87,7 @@ class ListenPaddleWebhooksCommand extends Command
             'service' => [
                 'required',
                 'string',
-                'in:tunnelmole,test',
+                'in:tunnelmole',
             ],
         ], [
             'api_key.required' => 'The PADDLE_API_KEY environment variable is required.',
@@ -95,12 +96,6 @@ class ListenPaddleWebhooksCommand extends Command
 
     protected function handleEnvironment(): ?int
     {
-        if ($this->argument('service') === 'test') {
-            info('cashier-paddle-webhooks:listen is using the test service.');
-
-            return static::SUCCESS;
-        }
-
         if (! App::environment('local')) {
             error('paddle:listen can only be used in local environment.');
 
