@@ -2,9 +2,9 @@
 
 namespace Einenlum\CashierPaddleWebhooks;
 
+use Einenlum\CashierPaddleWebhooks\Commands\CashierPaddleWebhooksCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Einenlum\CashierPaddleWebhooks\Commands\CashierPaddleWebhooksCommand;
 
 class CashierPaddleWebhooksServiceProvider extends PackageServiceProvider
 {
@@ -18,8 +18,6 @@ class CashierPaddleWebhooksServiceProvider extends PackageServiceProvider
         $package
             ->name('cashier-paddle-webhooks')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_cashier_paddle_webhooks_table')
             ->hasCommand(CashierPaddleWebhooksCommand::class);
     }
 }
