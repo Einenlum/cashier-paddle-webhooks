@@ -5,6 +5,8 @@ namespace Einenlum\CashierPaddleWebhooks\Commands;
 use Einenlum\CashierPaddleWebhooks\Exceptions\CashierPaddleWebhooksException;
 use Einenlum\CashierPaddleWebhooks\Facades\CashierPaddleWebhooks;
 use Illuminate\Console\Command;
+use Illuminate\Contracts\Console\Isolatable;
+use Illuminate\Contracts\Console\PromptsForMissingInput;
 use Illuminate\Process\InvokedProcess;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Process;
@@ -21,10 +23,10 @@ use function Laravel\Prompts\select;
  *
  * Thanks to them!
  */
-class ListenPaddleWebhooksCommand extends Command
+class ListenPaddleWebhooksCommand extends Command implements Isolatable, PromptsForMissingInput
 {
     public $signature = 'cashier-paddle-webhooks:listen
-                        {service? : The tunneling service to use}
+                        {service : The tunneling service to use}
                         {--port=8000 : The port on your machine to tunnel to the internet}';
 
     public $description = 'Listens to Paddle webhooks via tunnelmole.';
@@ -64,12 +66,6 @@ class ListenPaddleWebhooksCommand extends Command
         $this->validateArguments();
 
         $errorCode = $this->handleEnvironment();
-
-        if ($errorCode !== null) {
-            return $errorCode;
-        }
-
-        $errorCode = $this->handleCleanup();
 
         if ($errorCode !== null) {
             return $errorCode;
