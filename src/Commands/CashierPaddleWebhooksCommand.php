@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Einenlum\CashierPaddleWebhooks\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class CashierPaddleWebhooksCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'cashier-paddle-webhooks';
 
     public $description = 'My command';
 

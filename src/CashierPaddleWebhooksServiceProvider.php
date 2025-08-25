@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace Einenlum\CashierPaddleWebhooks;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
+use Einenlum\CashierPaddleWebhooks\Commands\CashierPaddleWebhooksCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class CashierPaddleWebhooksServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +16,10 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('cashier-paddle-webhooks')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_migration_table_name_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasMigration('create_cashier_paddle_webhooks_table')
+            ->hasCommand(CashierPaddleWebhooksCommand::class);
     }
 }
