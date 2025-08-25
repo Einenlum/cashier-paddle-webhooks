@@ -4,27 +4,27 @@ namespace Einenlum\CashierPaddleWebhooks;
 
 use Einenlum\CashierPaddleWebhooks\DTOs\PaddleWebhook;
 use Einenlum\CashierPaddleWebhooks\Exceptions\CashierPaddleWebhooksException;
-use Illuminate\Contracts\Cache\Repository as Cache;
 use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 class CashierPaddleWebhooks
 {
-    public function __construct(private Cache $cache) {}
+    public function __construct() {}
 
     public function setSecret(string $secret): void
     {
-        $this->cache->put(config('cashier-paddle-webhooks.cache_key'), $secret);
+        Cache::put(config('cashier-paddle-webhooks.cache_key'), $secret);
     }
 
     public function getSecret(): ?string
     {
-        return $this->cache->get(config('cashier-paddle-webhooks.cache_key'));
+        return Cache::get(config('cashier-paddle-webhooks.cache_key'));
     }
 
     public function forgetSecret(): void
     {
-        $this->cache->forget(config('cashier-paddle-webhooks.cache_key'));
+        Cache::forget(config('cashier-paddle-webhooks.cache_key'));
     }
 
     public function fetchWebhooks(): array
