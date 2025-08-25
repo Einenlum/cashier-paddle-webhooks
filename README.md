@@ -3,6 +3,8 @@
 ### A package to automatically listen to Paddle Webhooks in local development with Laravel Cashier
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/einenlum/cashier-paddle-webhooks.svg?style=flat-square)](https://packagist.org/packages/einenlum/cashier-paddle-webhooks)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/einenlum/cashier-paddle-webhooks/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/einenlum/cashier-paddle-webhooks/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/einenlum/cashier-paddle-webhooks/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/einenlum/cashier-paddle-webhooks/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 
 This package allows you to setup Paddle webhooks locally in just one command, thanks to [tunnelmole](https://tunnelmole.com/). When the command is killed, it removes the webhook from Paddle. The library only works in *sandbox* mode.
 
