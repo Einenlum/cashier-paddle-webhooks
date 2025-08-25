@@ -3,6 +3,7 @@
 namespace Einenlum\CashierPaddleWebhooks;
 
 use Einenlum\CashierPaddleWebhooks\Commands\ListenPaddleWebhooksCommand;
+use Illuminate\Support\Facades\Route;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -29,7 +30,12 @@ class CashierPaddleWebhooksServiceProvider extends PackageServiceProvider
 
     public function configureRoutes(): void
     {
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        Route::group([
+            'prefix' => config('cashier.path'),
+            'as' => 'cashier.',
+        ], function () {
+            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        });
     }
 
     public function configurePackage(Package $package): void
