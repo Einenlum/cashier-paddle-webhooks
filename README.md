@@ -35,12 +35,14 @@ You should then add this in your `AppServiceProvider`:
 ```php
 use Laravel\Paddle\Cashier;
 
-public function boot()
+public function register()
 {
     // ...
     Cashier::ignoreRoutes();
 }
 ```
+
+This must be done in the **register** method and not the **boot** one. See [here](https://github.com/laravel/cashier-stripe/issues/1739).
 
 This will allow the package to override the `webhook` page that is declared by [Cashier Paddle](https://laravel.com/docs/12.x/cashier-paddle).
 
