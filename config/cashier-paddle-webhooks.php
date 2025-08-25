@@ -5,7 +5,8 @@ return [
     // Key used to store the Paddle webhook secret in the cache.
     'cache_key' => 'cashier-paddle-webhooks.secret',
 
-    // Default is config('cashier.pash').'/webhook'
+    // Default is config('cashier.pash').'/webhook' if null
+    // but you can override it here.
     'webhook_path' => null,
 
     'subscribed_events' => [
