@@ -182,6 +182,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## Credits
 
 - [Dries Vints](https://github.com/driesvints) for his great library [lmsqueezy/laravel](https://github.com/lmsqueezy/laravel)
+- [Spatie](https://spatie.be/) team for creating the [spatie/package-skeleton-laravel](https://github.com/spatie/package-skeleton-laravel) template
 
 ## Other projects of mine
 
