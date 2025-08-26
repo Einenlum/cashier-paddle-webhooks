@@ -5,6 +5,7 @@ namespace Einenlum\CashierPaddleWebhooks\Tests;
 use Einenlum\CashierPaddleWebhooks\CashierPaddleWebhooksServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Laravel\Paddle\Cashier;
+use Orchestra\Testbench\Bootstrap\HandleExceptions;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -44,6 +45,7 @@ class TestCase extends Orchestra
          *
          * @see https://github.com/laravel/framework/issues/49502
          */
-        restore_exception_handler();
+        HandleExceptions::flushState();
+        HandleExceptions::flushHandlersState();
     }
 }
