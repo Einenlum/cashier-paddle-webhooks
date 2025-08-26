@@ -5,8 +5,6 @@ use Illuminate\Validation\ValidationException;
 describe('ListenPaddleWebhooksCommand', function () {
     describe('Argument validation', function () {
         it('validates required PADDLE_API_KEY', function () {
-            $this->withoutExceptionHandling();
-
             config(['cashier.api_key' => null]);
             config(['cashier.sandbox' => true]);
 
@@ -16,7 +14,6 @@ describe('ListenPaddleWebhooksCommand', function () {
         });
 
         it('validates service parameter must be valid option', function () {
-            $this->withoutExceptionHandling();
             config(['cashier.api_key' => 'test_api_key']);
             config(['cashier.sandbox' => true]);
 
@@ -38,7 +35,6 @@ describe('ListenPaddleWebhooksCommand', function () {
         });
 
         it('prevents running in production mode', function () {
-            $this->withoutExceptionHandling();
             config(['cashier.api_key' => 'test_api_key']);
             config(['cashier.sandbox' => false]);
 

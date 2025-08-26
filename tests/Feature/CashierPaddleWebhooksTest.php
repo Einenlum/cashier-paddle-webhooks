@@ -89,8 +89,6 @@ describe('CashierPaddleWebhooks', function () {
         });
 
         it('handles API errors properly on setup', function () {
-            $this->withoutExceptionHandling();
-
             $tunnel = 'https://example-tunnel.com';
             $service = 'tunnelmole';
 
