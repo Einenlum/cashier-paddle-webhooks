@@ -46,7 +46,7 @@ public function register()
 
 This must be done in the **register** method and not the **boot** one. See [here](https://github.com/laravel/cashier-stripe/issues/1739).
 
-This will allow the package to override the `webhook` page that is declared by [Cashier Paddle](https://laravel.com/docs/12.x/cashier-paddle).
+This will allow the package to override the `webhook` page that is declared by [Cashier Paddle](https://laravel.com/docs/12.x/cashier-paddle). We must override it to use our Middleware instead of Cashier's one, because we need to get the Webhook secret from the cache if it exists.
 
 You can publish the config file with:
 
@@ -64,6 +64,19 @@ return [
     // Default is config('cashier.pash').'/webhook' if null
     // but you can override it here.
     'webhook_path' => null,
+
+    /*
+     * Whether to automatically register the webhook route
+     * from this package.
+     *
+     * Check the documentation as to why it is enabled by default.
+     *
+     * If you disable this, you will have to take care yourself
+     * of overriding the default Cashier Paddle middleware.
+     *
+     * @see VerifyPaddleWebhookMiddleware
+     */
+    'register_routes' => true,
 
     'subscribed_events' => [
         // Transaction events

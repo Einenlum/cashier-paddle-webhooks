@@ -9,6 +9,19 @@ return [
     // but you can override it here.
     'webhook_path' => null,
 
+    /*
+     * Whether to automatically register the webhook route
+     * from this package.
+     *
+     * Check the documentation as to why it is enabled by default.
+     *
+     * If you disable this, you will have to take care yourself
+     * of overriding the default Cashier Paddle middleware.
+     *
+     * @see VerifyPaddleWebhookMiddleware
+     */
+    'register_routes' => true,
+
     'subscribed_events' => [
         // Transaction events
         'transaction.billed',

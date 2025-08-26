@@ -30,6 +30,10 @@ class CashierPaddleWebhooksServiceProvider extends PackageServiceProvider
 
     public function configureRoutes(): void
     {
+        if (! config('cashier-paddle-webhooks.register_routes')) {
+            return;
+        }
+
         Route::group([
             'prefix' => config('cashier.path'),
             'as' => 'cashier.',
