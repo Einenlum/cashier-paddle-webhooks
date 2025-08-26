@@ -45,7 +45,7 @@ class TestCase extends Orchestra
          *
          * @see https://github.com/laravel/framework/issues/49502
          */
-        HandleExceptions::flushState();
-        HandleExceptions::flushHandlersState();
+        // HandleExceptions::flushState();
+        // HandleExceptions::flushHandlersState();
     }
 }
