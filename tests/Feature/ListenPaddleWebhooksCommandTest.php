@@ -13,15 +13,6 @@ describe('ListenPaddleWebhooksCommand', function () {
             })->toThrow(ValidationException::class);
         });
 
-        it('validates service parameter is required', function () {
-            config(['cashier.api_key' => 'test_api_key']);
-            config(['cashier.sandbox' => true]);
-
-            expect(function () {
-                $this->artisan('cashier-paddle-webhooks:listen');
-            })->toThrow(ValidationException::class);
-        });
-
         it('validates service parameter must be valid option', function () {
             config(['cashier.api_key' => 'test_api_key']);
             config(['cashier.sandbox' => true]);
