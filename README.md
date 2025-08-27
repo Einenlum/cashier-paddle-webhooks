@@ -19,6 +19,8 @@ This library relies on **cache** to temporarily override the webhook secret.
 - `laravel/cashier-paddle:^2.6`
 - `tunnelmole` (see instructions [here](https://tunnelmole.com/))
 
+This library does **not** work on Windows (because of signal handling).
+
 You will also need to setup at least these envs:
 
 ```
