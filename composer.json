@@ -86,6 +86,16 @@
             }
         }
     },
+    "archive": {
+        "exclude": [
+            "assets/",
+            "tests/",
+            "workbench/",
+            ".github/",
+            "phpstan.neon.dist",
+            "phpunit.xml"
+        ]
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
